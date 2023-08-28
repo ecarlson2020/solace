@@ -34,7 +34,7 @@ export default function CenterBox({
         sx={{
           px: 3,
           mx: "auto",
-          maxWidth: "lg",
+          maxWidth: "sm",
         }}
       >
         {children}
