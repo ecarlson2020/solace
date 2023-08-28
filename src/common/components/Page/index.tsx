@@ -3,9 +3,11 @@ import Head from "next/head";
 // mui
 import { ThemeProvider } from "@mui/material/styles";
 // theme
-import { lightTheme, darkTheme } from "../../theme";
+import { lightTheme, darkTheme } from "../../../theme";
 // store
-import { useRootStore, RootState } from "../../store";
+import { useRootStore, RootState } from "../../../store";
+//components
+import Header from '../../../common/components/Page/Header'
 
 interface PageProps {
   children: ReactNode;
@@ -20,6 +22,8 @@ export default function Page(props: PageProps) {
       <Head>
         <link rel="shortcut icon" href="/images/favicon.ico" />
       </Head>
+      <Header>
+      </Header>
       {children}
     </ThemeProvider>
   );
