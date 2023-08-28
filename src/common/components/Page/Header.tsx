@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -8,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
+// store
+import { RootState, useRootStore } from "../../../store";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,6 +53,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const isDialogOpen = useRootStore((state: RootState) => state.isDialogOpen);
+  const setIsDialogOpen = useRootStore(
+    (state: RootState) => state.setIsDialogOpen
+  );
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="primary" sx={{ boxShadow: "none" }}>
@@ -84,7 +90,7 @@ export default function SearchAppBar() {
             aria-label="open drawer"
             sx={{ ml: 2 }}
           >
-            <AddIcon />
+            <AddIcon onClick={() => setIsDialogOpen(true)} />
           </IconButton>
         </Toolbar>
       </AppBar>

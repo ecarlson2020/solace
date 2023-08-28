@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 // mui
 import { Switch, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -8,6 +8,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { RootState, useRootStore } from "../../store";
 // components
 import Note from "./Note";
+import NewNote from "./NewNote";
 
 function SwitchIcon({ children }: { children: ReactNode }) {
   return (
@@ -39,40 +40,43 @@ export default function Home() {
   const theme = useTheme();
 
   return (
-    <Box
-      sx={{
-        background: theme.palette.primary.bg,
-        transition: "0.3s ease background",
-      }}
-    >
+    <>
+      <NewNote />
       <Box
         sx={{
-          minHeight: "calc(100vh - 56px)",
-          maxWidth: "sm",
-          px: 2,
-          mx: "auto",
+          background: theme.palette.primary.bg,
+          transition: "0.3s ease background",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "flex-end", py: 2 }}>
-          <Switch
-            checked={!isLightMode}
-            onClick={() => setIsLightMode(!isLightMode)}
-            checkedIcon={
-              <SwitchIcon>
-                <DarkModeIcon sx={iconStyle} />
-              </SwitchIcon>
-            }
-            icon={
-              <SwitchIcon>
-                <WbSunnyIcon sx={iconStyle} />
-              </SwitchIcon>
-            }
-          />
+        <Box
+          sx={{
+            minHeight: "calc(100vh - 56px)",
+            maxWidth: "sm",
+            px: 2,
+            mx: "auto",
+          }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "flex-end", py: 2 }}>
+            <Switch
+              checked={!isLightMode}
+              onClick={() => setIsLightMode(!isLightMode)}
+              checkedIcon={
+                <SwitchIcon>
+                  <DarkModeIcon sx={iconStyle} />
+                </SwitchIcon>
+              }
+              icon={
+                <SwitchIcon>
+                  <WbSunnyIcon sx={iconStyle} />
+                </SwitchIcon>
+              }
+            />
+          </Box>
+          <Note />
+          <Note />
+          <Note />
         </Box>
-        <Note />
-        <Note />
-        <Note />
       </Box>
-    </Box>
+    </>
   );
 }
