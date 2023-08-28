@@ -5,7 +5,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 export default function Note() {
   return (
-    <Card sx={{ mb: 3, pt: 3, px: 3, pb: 0 }}>
+    <Card sx={{ mb: 2, pt: 2, px: 2, pb: 0 }}>
       <Typography variant="h6">My Shopping List</Typography>
       <Typography>
         This is going to be a note. This is another line. This is yet another
@@ -18,7 +18,7 @@ export default function Note() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          pt: 3,
+          pt: 2,
         }}
       >
         <Box>

@@ -53,7 +53,7 @@ export default function Home() {
           mx: "auto",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "flex-end", py: 3 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", py: 2 }}>
           <Switch
             checked={!isLightMode}
             onClick={() => setIsLightMode(!isLightMode)}
