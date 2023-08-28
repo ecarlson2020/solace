@@ -1,5 +1,7 @@
 // mui
 import {
+  Divider,
+  Box,
   IconButton,
   TextField,
   Button,
@@ -33,20 +35,31 @@ export default function Home() {
         >
           Search...
         </TextField>
-        <Typography variant="h5">My Shopping List</Typography>
+        <Typography variant="h6">My Shopping List</Typography>
         <Typography>
           This is going to be a note. This is another line. This is yet another
           line. This is yet another line. This is yet another line. This is yet
           another line. This is yet another line. This is yet another line. This
           is yet another line.{" "}
         </Typography>
-        <IconButton size="small">
-          <EditIcon />
-        </IconButton>
-        <IconButton size="small">
-          <DeleteIcon />
-        </IconButton>
-        <Typography variant="subtitle2">Last Edited: 2 days ago</Typography>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box>
+            <IconButton size="small" sx={{ mr: 1, my: 1 }}>
+              <EditIcon />
+            </IconButton>
+            <IconButton size="small">
+              <DeleteIcon />
+            </IconButton>
+          </Box>
+          <Typography variant="subtitle2">Last Edited: 2 days ago</Typography>
+        </div>
+        <Divider />
       </CenterBox>
     </Page>
   );

@@ -160,6 +160,12 @@ const lightThemeObj = {
       textTransform: "uppercase" as const,
       fontWeight: 700,
     },
+    subtitle1: {
+      color: lightText,
+    },
+    subtitle2: {
+      color: lightText,
+    },
     button: {
       fontWeight: 700,
       fontSize: "18px",
