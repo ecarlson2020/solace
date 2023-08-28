@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 // mui
 import { Switch, Divider, Box, IconButton, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
@@ -38,10 +39,36 @@ export default function Home() {
     (state: RootState) => state.setIsLightMode
   );
   const iconStyle = { fontSize: "14px", color: "primary.main" };
+  const theme = useTheme();
+  console.log(theme);
 
   return (
     <Page>
-      <CenterBox>
+      <Box
+        sx={{
+          minHeight: "calc(100vh - 56px)",
+          maxWidth: "sm",
+          px: 2,
+          mx: "auto",
+          background: theme.palette.primary.bg,
+        }}
+      >
+        <Box sx={{ display: "flex", justifyContent: "flex-end", py: 2 }}>
+          <Switch
+            checked={!isLightMode}
+            onClick={() => setIsLightMode(!isLightMode)}
+            checkedIcon={
+              <SwitchIcon>
+                <DarkModeIcon sx={iconStyle} />
+              </SwitchIcon>
+            }
+            icon={
+              <SwitchIcon>
+                <WbSunnyIcon sx={iconStyle} />
+              </SwitchIcon>
+            }
+          />
+        </Box>
         <Typography variant="h6">My Shopping List</Typography>
         <Typography>
           This is going to be a note. This is another line. This is yet another
@@ -67,21 +94,7 @@ export default function Home() {
           <Typography variant="subtitle2">Last Edited: 2 days ago</Typography>
         </div>
         <Divider />
-      </CenterBox>
-      <Switch
-        checked={!isLightMode}
-        onClick={() => setIsLightMode(!isLightMode)}
-        checkedIcon={
-          <SwitchIcon>
-            <DarkModeIcon sx={iconStyle} />
-          </SwitchIcon>
-        }
-        icon={
-          <SwitchIcon>
-            <WbSunnyIcon sx={iconStyle} />
-          </SwitchIcon>
-        }
-      />
+      </Box>
     </Page>
   );
 }
