@@ -4,6 +4,7 @@ const lightText = "#34423a";
 const darkText = "#eee";
 // orange
 const orange = "rgb(241, 93, 34)";
+const darkOrange = "#a13c14";
 // green
 const greenLightTheme = "#119944";
 const greenDarkTheme = "#2fb040";
@@ -183,6 +184,7 @@ darkThemeObj.palette.primary.gradient = darkGradient;
 darkThemeObj.palette.primary.green = greenDarkTheme;
 darkThemeObj.palette.primary.boxShadow = boxShadowDarkTheme;
 darkThemeObj.palette.primary.border = borderDarkTheme;
+darkThemeObj.palette.primary.main = darkOrange;
 darkThemeObj.palette.secondary.main = greenDarkTheme;
 darkThemeObj.palette.tertiary.main = darkText;
 darkThemeObj.typography.h1.color = darkText;
@@ -190,6 +192,8 @@ darkThemeObj.typography.h2.color = darkText;
 darkThemeObj.typography.h3.color = darkText;
 darkThemeObj.typography.h4.color = greenDarkTheme;
 darkThemeObj.typography.h6.color = darkText;
+darkThemeObj.typography.subtitle1.color = darkText;
+darkThemeObj.typography.subtitle2.color = darkText;
 darkThemeObj.typography.body1.color = darkText;
 darkThemeObj.typography.body2.color = greenDarkTheme;
 darkThemeObj.components.MuiCard.styleOverrides.root.background = darkBg;

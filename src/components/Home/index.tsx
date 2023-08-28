@@ -1,12 +1,44 @@
+import { ReactNode } from "react";
 // mui
-import { Divider, Box, IconButton, Typography } from "@mui/material";
+import { Switch, Divider, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 // components
 import Page from "../../common/components/Page";
 import CenterBox from "../../common/components/CenterBox";
+// store
+import { RootState, useRootStore } from "../../store";
+
+function SwitchIcon({ children }: { children: ReactNode }) {
+  return (
+    <Box
+      sx={(theme) => ({
+        borderRadius: "100%",
+        background: theme.palette.primary.bg,
+        width: "20px",
+        textAlign: "center",
+        height: "20px",
+        transform: "translate(0, -1px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: `1px 1px 2px 0 ${theme.palette.primary.boxShadow}`,
+      })}
+    >
+      {children}
+    </Box>
+  );
+}
 
 export default function Home() {
+  const isLightMode = useRootStore((state: RootState) => state.isLightMode);
+  const setIsLightMode = useRootStore(
+    (state: RootState) => state.setIsLightMode
+  );
+  const iconStyle = { fontSize: "14px", color: "primary.main" };
+
   return (
     <Page>
       <CenterBox>
@@ -36,6 +68,20 @@ export default function Home() {
         </div>
         <Divider />
       </CenterBox>
+      <Switch
+        checked={!isLightMode}
+        onClick={() => setIsLightMode(!isLightMode)}
+        checkedIcon={
+          <SwitchIcon>
+            <DarkModeIcon sx={iconStyle} />
+          </SwitchIcon>
+        }
+        icon={
+          <SwitchIcon>
+            <WbSunnyIcon sx={iconStyle} />
+          </SwitchIcon>
+        }
+      />
     </Page>
   );
 }
