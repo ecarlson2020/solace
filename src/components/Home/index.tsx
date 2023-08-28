@@ -6,9 +6,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-// components
-import Page from "../../common/components/Page";
-import CenterBox from "../../common/components/CenterBox";
 // store
 import { RootState, useRootStore } from "../../store";
 
@@ -40,61 +37,58 @@ export default function Home() {
   );
   const iconStyle = { fontSize: "14px", color: "primary.main" };
   const theme = useTheme();
-  console.log(theme);
 
   return (
-    <Page>
-      <Box
-        sx={{
-          minHeight: "calc(100vh - 56px)",
-          maxWidth: "sm",
-          px: 2,
-          mx: "auto",
-          background: theme.palette.primary.bg,
+    <Box
+      sx={{
+        minHeight: "calc(100vh - 56px)",
+        maxWidth: "sm",
+        px: 2,
+        mx: "auto",
+        background: theme.palette.primary.bg,
+      }}
+    >
+      <Box sx={{ display: "flex", justifyContent: "flex-end", py: 2 }}>
+        <Switch
+          checked={!isLightMode}
+          onClick={() => setIsLightMode(!isLightMode)}
+          checkedIcon={
+            <SwitchIcon>
+              <DarkModeIcon sx={iconStyle} />
+            </SwitchIcon>
+          }
+          icon={
+            <SwitchIcon>
+              <WbSunnyIcon sx={iconStyle} />
+            </SwitchIcon>
+          }
+        />
+      </Box>
+      <Typography variant="h6">My Shopping List</Typography>
+      <Typography>
+        This is going to be a note. This is another line. This is yet another
+        line. This is yet another line. This is yet another line. This is yet
+        another line. This is yet another line. This is yet another line. This
+        is yet another line.{" "}
+      </Typography>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "flex-end", py: 2 }}>
-          <Switch
-            checked={!isLightMode}
-            onClick={() => setIsLightMode(!isLightMode)}
-            checkedIcon={
-              <SwitchIcon>
-                <DarkModeIcon sx={iconStyle} />
-              </SwitchIcon>
-            }
-            icon={
-              <SwitchIcon>
-                <WbSunnyIcon sx={iconStyle} />
-              </SwitchIcon>
-            }
-          />
+        <Box>
+          <IconButton size="small" sx={{ mr: 1, my: 1 }} color="primary">
+            <EditIcon />
+          </IconButton>
+          <IconButton size="small" color="primary">
+            <DeleteIcon />
+          </IconButton>
         </Box>
-        <Typography variant="h6">My Shopping List</Typography>
-        <Typography>
-          This is going to be a note. This is another line. This is yet another
-          line. This is yet another line. This is yet another line. This is yet
-          another line. This is yet another line. This is yet another line. This
-          is yet another line.{" "}
-        </Typography>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Box>
-            <IconButton size="small" sx={{ mr: 1, my: 1 }}>
-              <EditIcon />
-            </IconButton>
-            <IconButton size="small">
-              <DeleteIcon />
-            </IconButton>
-          </Box>
-          <Typography variant="subtitle2">Last Edited: 2 days ago</Typography>
-        </div>
-        <Divider />
-      </Box>
-    </Page>
+        <Typography variant="subtitle2">Last Edited: 2 days ago</Typography>
+      </div>
+      <Divider />
+    </Box>
   );
 }
