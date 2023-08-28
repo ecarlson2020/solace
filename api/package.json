@@ -1,0 +1,23 @@
+{
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "dev-lint": "nodemon ./src/server.js --exec 'npm run lint && node'",
+    "prod": "npm i; NODE_ENV=production node ./src/server.js",
+    "kill": "fuser -k 5007/tcp",
+    "lint": "npx eslint --fix ./src"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.0.1",
+    "unimported": "^1.29.2"
+  }
+}
