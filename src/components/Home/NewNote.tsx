@@ -19,6 +19,7 @@ export default function NewNote() {
     (state: RootState) => state.setIsDialogOpen
   );
   const handleClose = () => setIsDialogOpen(false);
+
   return (
     <Dialog
       onClose={handleClose}
