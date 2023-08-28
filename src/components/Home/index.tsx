@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 // mui
-import { Switch, Divider, Box, IconButton, Typography } from "@mui/material";
+import { Switch, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 // store
 import { RootState, useRootStore } from "../../store";
+// components
+import Note from "./Note";
 
 function SwitchIcon({ children }: { children: ReactNode }) {
   return (
@@ -41,54 +41,38 @@ export default function Home() {
   return (
     <Box
       sx={{
-        minHeight: "calc(100vh - 56px)",
-        maxWidth: "sm",
-        px: 2,
-        mx: "auto",
         background: theme.palette.primary.bg,
+        transition: "0.3s ease background",
       }}
     >
-      <Box sx={{ display: "flex", justifyContent: "flex-end", py: 2 }}>
-        <Switch
-          checked={!isLightMode}
-          onClick={() => setIsLightMode(!isLightMode)}
-          checkedIcon={
-            <SwitchIcon>
-              <DarkModeIcon sx={iconStyle} />
-            </SwitchIcon>
-          }
-          icon={
-            <SwitchIcon>
-              <WbSunnyIcon sx={iconStyle} />
-            </SwitchIcon>
-          }
-        />
-      </Box>
-      <Typography variant="h6">My Shopping List</Typography>
-      <Typography>
-        This is going to be a note. This is another line. This is yet another
-        line. This is yet another line. This is yet another line. This is yet
-        another line. This is yet another line. This is yet another line. This
-        is yet another line.{" "}
-      </Typography>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+      <Box
+        sx={{
+          minHeight: "calc(100vh - 56px)",
+          maxWidth: "sm",
+          px: 2,
+          mx: "auto",
         }}
       >
-        <Box>
-          <IconButton size="small" sx={{ mr: 1, my: 1 }} color="primary">
-            <EditIcon />
-          </IconButton>
-          <IconButton size="small" color="primary">
-            <DeleteIcon />
-          </IconButton>
+        <Box sx={{ display: "flex", justifyContent: "flex-end", py: 3 }}>
+          <Switch
+            checked={!isLightMode}
+            onClick={() => setIsLightMode(!isLightMode)}
+            checkedIcon={
+              <SwitchIcon>
+                <DarkModeIcon sx={iconStyle} />
+              </SwitchIcon>
+            }
+            icon={
+              <SwitchIcon>
+                <WbSunnyIcon sx={iconStyle} />
+              </SwitchIcon>
+            }
+          />
         </Box>
-        <Typography variant="subtitle2">Last Edited: 2 days ago</Typography>
-      </div>
-      <Divider />
+        <Note />
+        <Note />
+        <Note />
+      </Box>
     </Box>
   );
 }
