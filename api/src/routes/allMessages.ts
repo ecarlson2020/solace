@@ -1,7 +1,7 @@
 // utils
 const { sql } = require("../utils");
 
-const inquire = async (req, res) => {
+const allMessages = async (req, res) => {
   try {
     const rows = await sql("SELECT * FROM ball_forum");
     res.status(200).json(rows);
@@ -11,4 +11,4 @@ const inquire = async (req, res) => {
   }
 };
 
-module.exports = inquire;
+module.exports = allMessages;

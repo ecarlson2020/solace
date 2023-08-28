@@ -3,9 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 // end points
-const allMessages = require("./routes/allMessages");
-const newMessage = require("./routes/newMessage");
-const deleteMessage = require("./routes/deleteMessage");
+const allMessages = require("./routes/allMessages.ts");
 
 const app = express();
 const siteName = "test2.evrocamedia";
@@ -33,8 +31,6 @@ app.use(cors());
 
 // end points
 app.get("/all", allMessages);
-app.post("/new", newMessage);
-app.delete("/:id", deleteMessage);
 
 const httpsServer = https.createServer(getCredentials(), app);
 const port = 5009;

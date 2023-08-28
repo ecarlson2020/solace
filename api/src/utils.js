@@ -1,7 +1,5 @@
 const fs = require("fs");
 const mysql = require("mysql2/promise");
-const process = require("process");
-const stripeRequire = require("stripe");
 
 // password
 const password = fs.readFileSync("/home/ecarlson10/pw/0", "utf8").trim();
