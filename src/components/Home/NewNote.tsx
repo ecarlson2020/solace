@@ -1,6 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
 // mui
-import { Box, Button, Stack, Dialog, TextField } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Button,
+  Stack,
+  Dialog,
+  TextField,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
 // store
@@ -25,6 +31,7 @@ export default function NewNote() {
       }}
     >
       <Stack sx={{ p: 2 }} spacing={2}>
+        <Typography variant="h3">New Note</Typography>
         <TextField variant="filled" label="Title" fullWidth />
         <TextField variant="filled" label="Note" multiline rows={6} fullWidth />
         <Box

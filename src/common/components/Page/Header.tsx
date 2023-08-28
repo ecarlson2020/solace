@@ -53,7 +53,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
-  const isDialogOpen = useRootStore((state: RootState) => state.isDialogOpen);
   const setIsDialogOpen = useRootStore(
     (state: RootState) => state.setIsDialogOpen
   );
