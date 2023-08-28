@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&display=swap');
+
+body{
+  margin:0;
+  overflow-x:hidden;
+}
+img{
+  width:100%;
+  display:block;
+}
+.white{
+  color:#fff;
+}
+.flex1{
+  display:flex;
+  align-items:center;
+}
+.flex2{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.relative{
+  position:relative;
+}
+.text-center{
+  text-align:center;
+}
