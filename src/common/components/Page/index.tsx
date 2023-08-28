@@ -6,8 +6,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "../../../theme";
 // store
 import { useRootStore, RootState } from "../../../store";
-//components
-import Header from '../../../common/components/Page/Header'
+// components
+import Header from "./Header";
 
 interface PageProps {
   children: ReactNode;
@@ -22,8 +22,7 @@ export default function Page(props: PageProps) {
       <Head>
         <link rel="shortcut icon" href="/images/favicon.ico" />
       </Head>
-      <Header>
-      </Header>
+      <Header />
       {children}
     </ThemeProvider>
   );

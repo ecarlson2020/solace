@@ -1,14 +1,5 @@
 // mui
-import {
-  Divider,
-  Box,
-  IconButton,
-  TextField,
-  Button,
-  Typography,
-  InputAdornment,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { Divider, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 // components
@@ -19,22 +10,6 @@ export default function Home() {
   return (
     <Page>
       <CenterBox>
-        <Typography variant="h1">Notes</Typography>
-        <TextField
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-          variant="filled"
-          placeholder="Search"
-          fullWidth
-          sx={{ my: 4 }}
-        >
-          Search...
-        </TextField>
         <Typography variant="h6">My Shopping List</Typography>
         <Typography>
           This is going to be a note. This is another line. This is yet another
