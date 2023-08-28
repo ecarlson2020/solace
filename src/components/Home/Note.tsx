@@ -29,7 +29,7 @@ export default function Note() {
             <DeleteIcon />
           </IconButton>
         </Box>
-        <Typography variant="subtitle2">Last Edited: 2 days ago</Typography>
+        <Typography variant="subtitle2">2 days ago</Typography>
       </Box>
     </Card>
   );
