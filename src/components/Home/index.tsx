@@ -1,7 +1,8 @@
 import { ReactNode, useEffect, useState } from "react";
 import axios from "axios";
+import Lottie from "lottie-react";
 // mui
-import { Switch, Box } from "@mui/material";
+import { Button, Switch, Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -12,6 +13,8 @@ import NoteBlock from "./NoteBlock";
 import NewNote from "./NewNote";
 // utils
 import { apiUrl } from "../../common/utils";
+// animations
+import contactUs from "../../animations/contactUs.json";
 
 function SwitchIcon({ children }: { children: ReactNode }) {
   return (
@@ -44,6 +47,9 @@ export default function Home() {
   const iconStyle = { fontSize: "14px", color: "primary.main" };
   const theme = useTheme();
   const [currentNote, setCurrentNote] = useState(null);
+  const setIsDialogOpen = useRootStore(
+    (state: RootState) => state.setIsDialogOpen
+  );
 
   useEffect(() => {
     getNotes();
@@ -82,14 +88,24 @@ export default function Home() {
               }
             />
           </Box>
-          {notes.map((note) => (
-            <NoteBlock
-              note={note}
-              key={note.id}
-              currentNote={currentNote}
-              setCurrentNote={setCurrentNote}
-            />
-          ))}
+          {notes.length > 0 ? (
+            notes.map((note) => (
+              <NoteBlock
+                note={note}
+                key={note.id}
+                currentNote={currentNote}
+                setCurrentNote={setCurrentNote}
+              />
+            ))
+          ) : (
+            <Box sx={{ maxWidth: "300px", mx: "auto" }} className="text-center">
+              <Typography variant="h3">No Notes Yet</Typography>
+              <Lottie animationData={contactUs} loop />
+              <Button variant="contained" onClick={() => setIsDialogOpen(true)}>
+                Add a Note
+              </Button>
+            </Box>
+          )}
         </Box>
       </Box>
     </>
