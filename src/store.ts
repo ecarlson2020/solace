@@ -1,6 +1,9 @@
 import { create } from "zustand";
+import axios from "axios";
 // ts
 import { Note } from "./types";
+// utils
+import { apiUrl } from "./common/utils";
 
 export interface RootState {
   isLightMode: boolean;
@@ -17,5 +20,8 @@ export const useRootStore = create((set) => ({
   isDialogOpen: false,
   setIsDialogOpen: (isDialogOpen) => set({ isDialogOpen }),
   notes: [],
-  setNotes: (notes) => set({ notes }),
+  getNotes: async () => {
+    const response = await axios.get(`${apiUrl}/all`);
+    set({ notes: response.data });
+  },
 }));

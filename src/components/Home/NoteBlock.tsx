@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 // mui
 import { Card, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -13,12 +13,12 @@ interface NoteProps {
 export default function NoteBlock({ note }: NoteProps) {
   const { ts, title, content, id } = note;
 
-  const edit = (id) => {
-    axios.patch(apiUrl + '/' + id)
+  const editMessage = (id) => {
+    axios.patch(`${apiUrl}/${id}`);
   };
 
-  const delete = (id) => {
-    axios.delete(apiUrl + '/' +id)
+  const deleteMessage = (id) => {
+    axios.delete(`${apiUrl}/${id}`);
   };
 
   return (
@@ -35,10 +35,10 @@ export default function NoteBlock({ note }: NoteProps) {
       >
         <Box>
           <IconButton size="small" sx={{ mr: 1, my: 1 }} color="primary">
-            <EditIcon onClick={()=>edit(id)} />
+            <EditIcon onClick={() => editMessage(id)} />
           </IconButton>
           <IconButton size="small" color="primary">
-            <DeleteIcon onClick={()=>delete(id)}/>
+            <DeleteIcon onClick={() => deleteMessage(id)} />
           </IconButton>
         </Box>
         <Typography variant="subtitle2">{ts}</Typography>

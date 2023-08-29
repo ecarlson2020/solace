@@ -40,16 +40,13 @@ export default function Home() {
     (state: RootState) => state.setIsLightMode
   );
   const notes = useRootStore((state: RootState) => state.notes);
-  const setNotes = useRootStore((state: RootState) => state.setNotes);
+  const getNotes = useRootStore((state: RootState) => state.getNotes);
   const iconStyle = { fontSize: "14px", color: "primary.main" };
   const theme = useTheme();
 
   useEffect(() => {
-    (async () => {
-      const response = await axios.get(`${apiUrl}/all`);
-      setNotes(response.data);
-    })();
-  }, [setNotes]);
+    getNotes();
+  }, []);
 
   return (
     <>

@@ -33,6 +33,7 @@ export default function NewNote() {
   const setIsDialogOpen = useRootStore(
     (state: RootState) => state.setIsDialogOpen
   );
+  const getNotes = useRootStore((state: RootState) => state.getNotes);
   const handleClose = () => setIsDialogOpen(false);
 
   const attemptSubmit = async () => {
@@ -54,7 +55,7 @@ export default function NewNote() {
       setContent("");
       handleClose();
       await axios.post(`${apiUrl}/new`, { title, content });
-      // await axios.get(`${apiUrl}/all`);
+      await getNotes();
       setAlertMessage("New note added!");
       setSeverity("success");
     }
