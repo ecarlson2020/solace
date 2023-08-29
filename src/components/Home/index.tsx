@@ -47,6 +47,7 @@ export default function Home() {
   const setIsDialogOpen = useRootStore(
     (state: RootState) => state.setIsDialogOpen
   );
+  const searchPhrase = useRootStore((state: RootState) => state.searchPhrase);
 
   useEffect(() => {
     getNotes();
@@ -86,13 +87,21 @@ export default function Home() {
             />
           </Box>
           {notes.length > 0 ? (
-            notes.map((note) => (
-              <NoteBlock
-                note={note}
-                key={note.id}
-                setCurrentNote={setCurrentNote}
-              />
-            ))
+            notes
+              .filter((note) => {
+                const { content, title } = note;
+                return (
+                  content.toLowerCase().includes(searchPhrase) ||
+                  title.toLowerCase().includes(searchPhrase)
+                );
+              })
+              .map((note) => (
+                <NoteBlock
+                  note={note}
+                  key={note.id}
+                  setCurrentNote={setCurrentNote}
+                />
+              ))
           ) : (
             <Box sx={{ maxWidth: "300px", mx: "auto" }} className="text-center">
               <Typography variant="h3">No Notes Yet</Typography>

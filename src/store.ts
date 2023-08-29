@@ -8,6 +8,8 @@ import { apiUrl } from "./common/utils";
 export interface RootState {
   isLightMode: boolean;
   setIsLightMode: (isLightMode: boolean) => void;
+  searchPhrase: string;
+  setSearchPhrase: (searchPhrase: string) => void;
   isDialogOpen: boolean;
   setIsDialogOpen: (isDialogOpen: boolean) => void;
   notes: Note[];
@@ -17,6 +19,8 @@ export interface RootState {
 export const useRootStore = create((set) => ({
   isLightMode: true,
   setIsLightMode: (isLightMode) => set({ isLightMode }),
+  searchPhrase: "",
+  setSearchPhrase: (searchPhrase) => set({ searchPhrase }),
   isDialogOpen: false,
   setIsDialogOpen: (isDialogOpen) => set({ isDialogOpen }),
   notes: [],

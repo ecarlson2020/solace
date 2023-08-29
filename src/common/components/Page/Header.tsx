@@ -56,6 +56,10 @@ export default function SearchAppBar() {
   const setIsDialogOpen = useRootStore(
     (state: RootState) => state.setIsDialogOpen
   );
+  const searchPhrase = useRootStore((state: RootState) => state.searchPhrase);
+  const setSearchPhrase = useRootStore(
+    (state: RootState) => state.setSearchPhrase
+  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -79,7 +83,11 @@ export default function SearchAppBar() {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+              inputProps={{
+                "aria-label": "search",
+                value: searchPhrase,
+                onChange: (e) => setSearchPhrase(e.target.value),
+              }}
             />
           </Search>
           <IconButton
