@@ -5,6 +5,7 @@
     "@mui/icons-material": "^5.14.6",
     "@mui/material": "^5.14.6",
     "axios": "^1.5.0",
+    "date-and-time": "^3.0.2",
     "lottie-react": "^2.4.0",
     "next": "^13.1.6",
     "react": "^18.2.0",
@@ -17,7 +18,7 @@
     "lint": "next lint",
     "fix": "next lint --fix",
     "up": "yarn build;qscp -u out",
-    "down": "website_location='/home/ecarlson10/webapps/test1.evrocamedia'; rm -rf $website_location; mv ~/out $website_location;"
+    "down": "website_location='/home/ecarlson10/webapps/test2.evrocamedia'; rm -rf $website_location; mv ~/out $website_location;"
   },
   "devDependencies": {
     "@types/react": "18.2.18",
