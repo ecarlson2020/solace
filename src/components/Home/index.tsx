@@ -49,7 +49,7 @@ export default function Home() {
       const response = await axios.get(`${apiUrl}/all`);
       setNotes(response.data);
     })();
-  }, []);
+  }, [setNotes]);
 
   return (
     <>
@@ -85,7 +85,7 @@ export default function Home() {
             />
           </Box>
           {notes.map((note) => (
-            <NoteBlock note={note} />
+            <NoteBlock note={note} key={note.id} />
           ))}
         </Box>
       </Box>
