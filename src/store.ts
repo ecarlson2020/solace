@@ -11,7 +11,7 @@ export interface RootState {
   isDialogOpen: boolean;
   setIsDialogOpen: (isDialogOpen: boolean) => void;
   notes: Note[];
-  setNotes: (notes: string) => void;
+  getNotes: () => void;
 }
 
 export const useRootStore = create((set) => ({

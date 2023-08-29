@@ -90,7 +90,6 @@ export default function Home() {
               <NoteBlock
                 note={note}
                 key={note.id}
-                currentNote={currentNote}
                 setCurrentNote={setCurrentNote}
               />
             ))

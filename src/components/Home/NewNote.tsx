@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch } from "react";
 import axios from "axios";
 // mui
 import {
@@ -10,6 +10,7 @@ import {
   Stack,
   Dialog,
   TextField,
+  AlertColor,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
@@ -22,7 +23,7 @@ import { Note } from "../../types";
 
 interface NewNoteProps {
   currentNote: Note;
-  setCurrentNote: () => null;
+  setCurrentNote: Dispatch<any>;
 }
 
 export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
@@ -32,7 +33,7 @@ export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
   const contentMinLength = 25;
   const contentMaxLength = 200;
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
-  const [severity, setSeverity] = useState("success");
+  const [severity, setSeverity] = useState<AlertColor>("success");
   const [content, setContent] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [title, setTitle] = useState("");

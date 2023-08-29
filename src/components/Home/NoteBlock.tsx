@@ -1,3 +1,4 @@
+import { Dispatch } from "react";
 import axios from "axios";
 // mui
 import { Card, Box, IconButton, Typography } from "@mui/material";
@@ -12,7 +13,7 @@ import { apiUrl } from "../../common/utils";
 
 interface NoteProps {
   note: Note;
-  setCurrentNote: () => null;
+  setCurrentNote: Dispatch<any>;
 }
 
 export default function NoteBlock({ note, setCurrentNote }: NoteProps) {
