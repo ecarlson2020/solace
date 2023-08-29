@@ -12,15 +12,10 @@ import { apiUrl } from "../../common/utils";
 
 interface NoteProps {
   note: Note;
-  currentNote: Note;
   setCurrentNote: () => null;
 }
 
-export default function NoteBlock({
-  note,
-  currentNote,
-  setCurrentNote,
-}: NoteProps) {
+export default function NoteBlock({ note, setCurrentNote }: NoteProps) {
   const { ts, title, content, id } = note;
   const getNotes = useRootStore((state: RootState) => state.getNotes);
   const setIsDialogOpen = useRootStore(
@@ -50,10 +45,19 @@ export default function NoteBlock({
         }}
       >
         <Box>
-          <IconButton size="small" sx={{ mr: 1, my: 1 }} color="primary" onClick={editMessage}>
+          <IconButton
+            size="small"
+            sx={{ mr: 1, my: 1 }}
+            color="primary"
+            onClick={editMessage}
+          >
             <EditIcon />
           </IconButton>
-          <IconButton size="small" color="primary" onClick={() => deleteMessage(id)}>
+          <IconButton
+            size="small"
+            color="primary"
+            onClick={() => deleteMessage(id)}
+          >
             <DeleteIcon />
           </IconButton>
         </Box>

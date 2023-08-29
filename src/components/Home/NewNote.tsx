@@ -51,7 +51,7 @@ export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
 
   useEffect(() => {
     if (currentNote) {
-      const { id, content, title, ts } = currentNote;
+      const { content, title } = currentNote;
       setTitle(title);
       setContent(content);
     }

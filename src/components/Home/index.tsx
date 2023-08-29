@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useState } from "react";
-import axios from "axios";
 import Lottie from "lottie-react";
 // mui
 import { Button, Switch, Box, Typography } from "@mui/material";
@@ -11,8 +10,6 @@ import { RootState, useRootStore } from "../../store";
 // components
 import NoteBlock from "./NoteBlock";
 import NewNote from "./NewNote";
-// utils
-import { apiUrl } from "../../common/utils";
 // animations
 import contactUs from "../../animations/contactUs.json";
 
@@ -53,7 +50,7 @@ export default function Home() {
 
   useEffect(() => {
     getNotes();
-  }, []);
+  }, [getNotes]);
 
   return (
     <>
