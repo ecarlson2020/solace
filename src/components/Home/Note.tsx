@@ -3,16 +3,21 @@ import { Card, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function Note() {
+interface NoteProps {
+  note: {
+    ts: string;
+    title: string;
+    content: string;
+    id: number;
+  };
+}
+
+export default function Note({ note }: NoteProps) {
+  const { ts, title, content, id } = note;
   return (
     <Card sx={{ mb: 2, pt: 2, px: 2, pb: 0 }}>
-      <Typography variant="h6">My Shopping List</Typography>
-      <Typography>
-        This is going to be a note. This is another line. This is yet another
-        line. This is yet another line. This is yet another line. This is yet
-        another line. This is yet another line. This is yet another line. This
-        is yet another line.{" "}
-      </Typography>
+      <Typography variant="h6">{title}</Typography>
+      <Typography>{content}</Typography>
       <Box
         sx={{
           display: "flex",
@@ -29,7 +34,7 @@ export default function Note() {
             <DeleteIcon />
           </IconButton>
         </Box>
-        <Typography variant="subtitle2">2 days ago</Typography>
+        <Typography variant="subtitle2">{ts}</Typography>
       </Box>
     </Card>
   );

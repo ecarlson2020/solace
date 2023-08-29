@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 // mui
 import {
   Alert,
@@ -14,6 +15,8 @@ import { useTheme } from "@mui/material/styles";
 import SendIcon from "@mui/icons-material/Send";
 // store
 import { RootState, useRootStore } from "../../store";
+// utils
+import { apiUrl } from "../../common/utils";
 
 export default function NewNote() {
   const theme = useTheme();
@@ -32,7 +35,7 @@ export default function NewNote() {
   );
   const handleClose = () => setIsDialogOpen(false);
 
-  const attemptSubmit = () => {
+  const attemptSubmit = async () => {
     if (title.length < titleMinLength || title.length > titleMaxLength) {
       setAlertMessage(
         `Title must be between ${titleMinLength} and ${titleMaxLength} characters.`
@@ -49,15 +52,16 @@ export default function NewNote() {
     } else {
       setTitle("");
       setContent("");
+      handleClose();
+      await axios.post(`${apiUrl}/new`, { title, content });
       setAlertMessage("New note added!");
       setSeverity("success");
-      handleClose();
     }
     setIsSnackbarOpen(true);
   };
 
   const handleChangeTitle = (e) => {
-    setTitle(event.target.value);
+    setTitle(e.target.value);
   };
 
   const handleChangeContent = (e) => {

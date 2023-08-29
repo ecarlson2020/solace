@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
+import axios from "axios";
 // mui
 import { Switch, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -9,6 +10,8 @@ import { RootState, useRootStore } from "../../store";
 // components
 import Note from "./Note";
 import NewNote from "./NewNote";
+// utils
+import { apiUrl } from "../../common/utils";
 
 function SwitchIcon({ children }: { children: ReactNode }) {
   return (
@@ -38,6 +41,15 @@ export default function Home() {
   );
   const iconStyle = { fontSize: "14px", color: "primary.main" };
   const theme = useTheme();
+  const [notes, setNotes] = useState([]);
+  console.log(notes);
+
+  useEffect(() => {
+    (async () => {
+      const response = await axios.get(`${apiUrl}/all`);
+      setNotes(response.data);
+    })();
+  }, []);
 
   return (
     <>
@@ -72,9 +84,9 @@ export default function Home() {
               }
             />
           </Box>
-          <Note />
-          <Note />
-          <Note />
+          {notes.map((note) => (
+            <Note note={note} />
+          ))}
         </Box>
       </Box>
     </>
