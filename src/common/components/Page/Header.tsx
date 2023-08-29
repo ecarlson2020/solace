@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+// mui
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -86,7 +88,8 @@ export default function SearchAppBar() {
               inputProps={{
                 "aria-label": "search",
                 value: searchPhrase,
-                onChange: (e) => setSearchPhrase(e.target.value),
+                onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                  setSearchPhrase(e.target.value),
               }}
             />
           </Search>
