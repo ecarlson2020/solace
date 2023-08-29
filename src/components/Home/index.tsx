@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import axios from "axios";
 // mui
 import { Switch, Box } from "@mui/material";
@@ -43,6 +43,7 @@ export default function Home() {
   const getNotes = useRootStore((state: RootState) => state.getNotes);
   const iconStyle = { fontSize: "14px", color: "primary.main" };
   const theme = useTheme();
+  const [currentNote, setCurrentNote] = useState(null);
 
   useEffect(() => {
     getNotes();
@@ -50,7 +51,7 @@ export default function Home() {
 
   return (
     <>
-      <NewNote />
+      <NewNote currentNote={currentNote} setCurrentNote={setCurrentNote} />
       <Box
         sx={{
           background: theme.palette.primary.bg,
@@ -82,7 +83,12 @@ export default function Home() {
             />
           </Box>
           {notes.map((note) => (
-            <NoteBlock note={note} key={note.id} />
+            <NoteBlock
+              note={note}
+              key={note.id}
+              currentNote={currentNote}
+              setCurrentNote={setCurrentNote}
+            />
           ))}
         </Box>
       </Box>

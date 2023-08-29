@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 // mui
 import {
@@ -17,8 +17,15 @@ import SendIcon from "@mui/icons-material/Send";
 import { RootState, useRootStore } from "../../store";
 // utils
 import { apiUrl } from "../../common/utils";
+// types
+import { Note } from "../../types";
 
-export default function NewNote() {
+interface NewNoteProps {
+  currentNote: Note;
+  setCurrentNote: () => null;
+}
+
+export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
   const theme = useTheme();
   const titleMinLength = 1;
   const titleMaxLength = 50;
@@ -34,7 +41,21 @@ export default function NewNote() {
     (state: RootState) => state.setIsDialogOpen
   );
   const getNotes = useRootStore((state: RootState) => state.getNotes);
-  const handleClose = () => setIsDialogOpen(false);
+
+  const handleClose = () => {
+    setCurrentNote(null)
+    setTitle("")
+    setContent("")
+    setIsDialogOpen(false)
+  };
+
+  useEffect(() => {
+    if (currentNote) {
+      const { id, content, title, ts } = currentNote;
+      setTitle(title);
+      setContent(content);
+    }
+  }, [currentNote]);
 
   const attemptSubmit = async () => {
     if (title.length < titleMinLength || title.length > titleMaxLength) {
@@ -51,8 +72,6 @@ export default function NewNote() {
       );
       setSeverity("warning");
     } else {
-      setTitle("");
-      setContent("");
       handleClose();
       await axios.post(`${apiUrl}/new`, { title, content });
       await getNotes();
@@ -114,6 +133,7 @@ export default function NewNote() {
             fullWidth
             inputProps={{ maxLength: contentMaxLength }}
             onChange={handleChangeContent}
+            value={content}
           />
           <Box
             sx={{

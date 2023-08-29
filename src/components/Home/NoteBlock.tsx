@@ -3,22 +3,38 @@ import axios from "axios";
 import { Card, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+// store
+import { RootState, useRootStore } from "../../store";
 // types
 import { Note } from "../../types";
+// utils
+import { apiUrl } from "../../common/utils";
 
 interface NoteProps {
   note: Note;
+  currentNote: Note;
+  setCurrentNote: () => null;
 }
 
-export default function NoteBlock({ note }: NoteProps) {
+export default function NoteBlock({
+  note,
+  currentNote,
+  setCurrentNote,
+}: NoteProps) {
   const { ts, title, content, id } = note;
+  const getNotes = useRootStore((state: RootState) => state.getNotes);
+  const setIsDialogOpen = useRootStore(
+    (state: RootState) => state.setIsDialogOpen
+  );
 
-  const editMessage = (id) => {
-    axios.patch(`${apiUrl}/${id}`);
+  const editMessage = async () => {
+    setCurrentNote(note);
+    setIsDialogOpen(true);
   };
 
-  const deleteMessage = (id) => {
-    axios.delete(`${apiUrl}/${id}`);
+  const deleteMessage = async (id) => {
+    await axios.delete(`${apiUrl}/${id}`);
+    await getNotes();
   };
 
   return (
@@ -34,11 +50,11 @@ export default function NoteBlock({ note }: NoteProps) {
         }}
       >
         <Box>
-          <IconButton size="small" sx={{ mr: 1, my: 1 }} color="primary">
-            <EditIcon onClick={() => editMessage(id)} />
+          <IconButton size="small" sx={{ mr: 1, my: 1 }} color="primary" onClick={editMessage}>
+            <EditIcon />
           </IconButton>
-          <IconButton size="small" color="primary">
-            <DeleteIcon onClick={() => deleteMessage(id)} />
+          <IconButton size="small" color="primary" onClick={() => deleteMessage(id)}>
+            <DeleteIcon />
           </IconButton>
         </Box>
         <Typography variant="subtitle2">{ts}</Typography>
