@@ -16,11 +16,11 @@ const getCredentials = () => {
   const privateKey = fs.readFileSync(privateKeyPath, "utf8");
   const certificate = fs.readFileSync(
     `/home/ecarlson10/cert/${siteName}-cert.pem`,
-    "utf8"
+    "utf8",
   );
   const fullchain = fs.readFileSync(
     `/home/ecarlson10/cert/${siteName}-fullchain.pem`,
-    "utf8"
+    "utf8",
   );
   return {
     key: privateKey,
