@@ -17,6 +17,10 @@ import { RootState, useRootStore } from "../../store";
 
 export default function NewNote() {
   const theme = useTheme();
+  const titleMinLength = 1;
+  const titleMaxLength = 50;
+  const contentMinLength = 25;
+  const contentMaxLength = 200;
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [severity, setSeverity] = useState("success");
   const [content, setContent] = useState("");
@@ -29,12 +33,18 @@ export default function NewNote() {
   const handleClose = () => setIsDialogOpen(false);
 
   const attemptSubmit = () => {
-    console.log(title, content);
-    if (!title) {
-      setAlertMessage("Title is required");
+    if (title.length < titleMinLength || title.length > titleMaxLength) {
+      setAlertMessage(
+        `Title must be between ${titleMinLength} and ${titleMaxLength} characters.`
+      );
       setSeverity("warning");
-    } else if (!content) {
-      setAlertMessage("Note is required");
+    } else if (
+      content.length < contentMinLength ||
+      title.length > contentMaxLength
+    ) {
+      setAlertMessage(
+        `Note must be between ${contentMinLength} and ${contentMaxLength} characters.`
+      );
       setSeverity("warning");
     } else {
       setTitle("");
@@ -47,7 +57,7 @@ export default function NewNote() {
   };
 
   const handleChangeTitle = (e) => {
-    setTitle(e.target.value);
+    setTitle(event.target.value);
   };
 
   const handleChangeContent = (e) => {
@@ -88,6 +98,7 @@ export default function NewNote() {
             fullWidth
             value={title}
             onChange={handleChangeTitle}
+            inputProps={{ maxLength: titleMaxLength }}
           />
           <TextField
             variant="filled"
@@ -95,6 +106,7 @@ export default function NewNote() {
             multiline
             rows={6}
             fullWidth
+            inputProps={{ maxLength: contentMaxLength }}
             onChange={handleChangeContent}
           />
           <Box

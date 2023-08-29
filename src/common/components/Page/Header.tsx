@@ -88,8 +88,9 @@ export default function SearchAppBar() {
             color="inherit"
             aria-label="open drawer"
             sx={{ ml: 2 }}
+            onClick={() => setIsDialogOpen(true)}
           >
-            <AddIcon onClick={() => setIsDialogOpen(true)} />
+            <AddIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
