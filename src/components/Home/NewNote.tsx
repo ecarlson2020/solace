@@ -42,8 +42,12 @@ export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
     (state: RootState) => state.setIsDialogOpen
   );
   const getNotes = useRootStore((state: RootState) => state.getNotes);
+  const setSearchPhrase = useRootStore(
+    (state: RootState) => state.setSearchPhrase
+  );
 
   const handleClose = () => {
+    setSearchPhrase("");
     setCurrentNote(null);
     setTitle("");
     setContent("");
