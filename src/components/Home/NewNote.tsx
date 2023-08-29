@@ -43,10 +43,10 @@ export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
   const getNotes = useRootStore((state: RootState) => state.getNotes);
 
   const handleClose = () => {
-    setCurrentNote(null)
-    setTitle("")
-    setContent("")
-    setIsDialogOpen(false)
+    setCurrentNote(null);
+    setTitle("");
+    setContent("");
+    setIsDialogOpen(false);
   };
 
   useEffect(() => {
@@ -73,7 +73,11 @@ export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
       setSeverity("warning");
     } else {
       handleClose();
-      await axios.post(`${apiUrl}/new`, { title, content });
+      if (currentNote) {
+        await axios.patch(`${apiUrl}/${currentNote.id}`, { title, content });
+      } else {
+        await axios.post(`${apiUrl}/new`, { title, content });
+      }
       await getNotes();
       setAlertMessage("New note added!");
       setSeverity("success");
