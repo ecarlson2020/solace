@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import axios from "axios";
-import date from 'date-and-time';
+import date from "date-and-time";
 // mui
 import { Card, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -63,7 +63,9 @@ export default function NoteBlock({ note, setCurrentNote }: NoteProps) {
             <DeleteIcon />
           </IconButton>
         </Box>
-        <Typography variant="subtitle2">{date.format(new Date(ts), 'ddd, MMM DD YYYY hh:mm:ss A')}</Typography>
+        <Typography variant="subtitle2">
+          {date.format(new Date(ts), "ddd, MMM DD YYYY hh:mm:ss A")}
+        </Typography>
       </Box>
     </Card>
   );
