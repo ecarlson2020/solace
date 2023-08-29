@@ -6,6 +6,7 @@ const fs = require("fs");
 const allMessages = require("./routes/allMessages");
 const newMessage = require("./routes/newMessage");
 const deleteMessage = require("./routes/deleteMessage");
+const updateMessage = require("./routes/updateMessage");
 
 const app = express();
 const siteName = "test2.evrocamedia";
@@ -35,6 +36,7 @@ app.use(cors());
 app.get("/all", allMessages);
 app.post("/new", newMessage);
 app.delete("/:id", deleteMessage);
+app.patch("/:id", updateMessage);
 
 const httpsServer = https.createServer(getCredentials(), app);
 const port = 5009;
