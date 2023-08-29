@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import axios from "axios";
 // mui
 import { Switch, Box } from "@mui/material";
@@ -8,7 +8,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 // store
 import { RootState, useRootStore } from "../../store";
 // components
-import Note from "./Note";
+import NoteBlock from "./NoteBlock";
 import NewNote from "./NewNote";
 // utils
 import { apiUrl } from "../../common/utils";
@@ -39,10 +39,10 @@ export default function Home() {
   const setIsLightMode = useRootStore(
     (state: RootState) => state.setIsLightMode
   );
+  const notes = useRootStore((state: RootState) => state.notes);
+  const setNotes = useRootStore((state: RootState) => state.setNotes);
   const iconStyle = { fontSize: "14px", color: "primary.main" };
   const theme = useTheme();
-  const [notes, setNotes] = useState([]);
-  console.log(notes);
 
   useEffect(() => {
     (async () => {
@@ -85,7 +85,7 @@ export default function Home() {
             />
           </Box>
           {notes.map((note) => (
-            <Note note={note} />
+            <NoteBlock note={note} />
           ))}
         </Box>
       </Box>

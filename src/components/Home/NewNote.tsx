@@ -54,6 +54,7 @@ export default function NewNote() {
       setContent("");
       handleClose();
       await axios.post(`${apiUrl}/new`, { title, content });
+      // await axios.get(`${apiUrl}/all`);
       setAlertMessage("New note added!");
       setSeverity("success");
     }

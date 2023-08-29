@@ -2,20 +2,18 @@
 import { Card, Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+// types
+import { Note } from "../../types";
 
 interface NoteProps {
-  note: {
-    ts: string;
-    title: string;
-    content: string;
-    id: number;
-  };
+  note: Note;
 }
 
-export default function Note({ note }: NoteProps) {
+export default function NoteBlock({ note }: NoteProps) {
   const { ts, title, content, id } = note;
+
   return (
-    <Card sx={{ mb: 2, pt: 2, px: 2, pb: 0 }}>
+    <Card sx={{ mb: 2, pt: 2, px: 2 }}>
       <Typography variant="h6">{title}</Typography>
       <Typography>{content}</Typography>
       <Box
