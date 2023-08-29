@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 // end points
-const allMessages = require("./routes/allMessages.ts");
+const allMessages = require("./routes/allMessages");
 
 const app = express();
 const siteName = "test2.evrocamedia";
