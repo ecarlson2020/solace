@@ -84,7 +84,7 @@ export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
         await axios.post(`${apiUrl}/new`, { title, content });
       }
       await getNotes();
-      setAlertMessage("New note added!");
+      setAlertMessage(`Note ${currentNote ? "updated" : "added"}!`);
       setSeverity("success");
     }
     setIsSnackbarOpen(true);
@@ -125,7 +125,7 @@ export default function NewNote({ currentNote, setCurrentNote }: NewNoteProps) {
         }}
       >
         <Stack sx={{ p: 2 }} spacing={2}>
-          <Typography variant="h3">New Note</Typography>
+          <Typography variant="h3">Note</Typography>
           <TextField
             variant="filled"
             label="Title"
